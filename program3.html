@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <style>
+            body {
+                background-color: lightyellow;
+            }
+        </style>
+        <script>
+            function p(){
+                var p=document.getElementById("p").value;
+                //var res=" ";
+                //for(var i=0;i<p.length;i++)
+                document.write(p.slice(0,5),"<br>");
+                //{
+                //  res=p.charAt(i)+res;
+            }
+            //slicing program
+            //document.getElementById("r").innerHTML=" "+res;
+        </script>
+    </head>
+    <body>
+        <h1>slicing</h1>
+        enter a string:<input type="text" id="p">
+        <button onclick="p()">click me</button>
+    </body>
+</html>
