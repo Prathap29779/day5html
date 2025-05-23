@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prime Number Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input[type="number"] {
+            padding: 8px;
+            font-size: 16px;
+            width: 200px;
+            margin-bottom: 10px;
+            border: 1px solid #333;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            width: 80%;
+            max-width: 600px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prime Number Generator</h1>
+    <input type="number" id="inputNumber" placeholder="Enter a number" min="2" />
+    <button onclick="generatePrimes()">Generate Primes</button>
+    <div id="result"></div>
+
+    <script>
+        function isPrime(num) {
+            if (num < 2) return false;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) return false;
+            }
+            return true;
+        }
+
+        function generatePrimes() {
+            const input = document.getElementById('inputNumber').value;
+            const maxNum = parseInt(input);
+            const resultDiv = document.getElementById('result');
+            if (isNaN(maxNum) || maxNum < 2) {
+                resultDiv.textContent = 'Please enter a valid number greater than or equal to 2.';
+                return;
+            }
+            const primes = [];
+            for (let i = 2; i <= maxNum; i++) {
+                if (isPrime(i)) primes.push(i);
+            }
+            resultDiv.textContent = 'Prime numbers up to ' + maxNum + ': ' + primes.join(', ');
+        }
+    </script>
+</body>
+</html>
