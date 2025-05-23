@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script>
+            function p(){
+                var p=document.getElementById("p").value;
+                var res=" ";
+                for(var i=0;i<p.length;i++)
+            {
+                res=p.charAt(i)+res;
+            }
+            document.getElementById("r").innerHTML=" "+res;
+            }
+        </script>
+    </head>
+     <body>
+        enter a string:<input type="text"id="p">
+         <h1 id="r"></h1>
+        <button onclick="p()">click me</button>
+    </body>
+</html>
+     
