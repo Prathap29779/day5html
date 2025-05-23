@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f0f8ff;
+                margin: 20px;
+            }
+            h1 {
+                color: #333366;
+                margin-bottom: 15px;
+            }
+            input[type="text"] {
+                padding: 8px;
+                margin: 8px 0;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                width: 250px;
+                display: block;
+            }
+            button {
+                padding: 10px 20px;
+                background-color: #333366;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+            button:hover {
+                background-color: #555599;
+            }
+        </style>
+        <script>
+            function a(){
+                var v1=document.getElementById("a").value;
+                var v2=document.getElementById("b").value;
+                var v3=document.getElementById("c").value;
+                var v4=document.getElementById("d").value;
+                var v5=v1.slice(0,4)+v2.charAt(v2.length-1)+v3.charAt(v3.length-1);
+                v5+=v4.slice(8,12);
+                document.getElementById("p").innerHTML=v5;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Enter Value to reverse</h1>
+        Enter Candidate Name:<input type="text" id="a"><br>
+        Enter Father Name:<input type="text" id="b"><br>
+        Enter Mother Name:<input type="text" id="c"><br>
+        Enter Aadhar<input type="text" id="d"><br>
+        <h1 id="p"></h1>
+        <button onclick="a()">Click me to see the String</button>
+    </body>
+</html>
