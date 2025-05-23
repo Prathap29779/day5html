@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Official PAN Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0e0e0;
+            margin: 40px;
+            display: flex;
+            justify-content: center;
+        }
+        .pan-card {
+            width: 420px;
+            border: 2px solid #000080;
+            padding: 20px;
+            box-shadow: 3px 3px 15px rgba(0,0,0,0.3);
+            background-color: #ffffff;
+            border-radius: 10px;
+            position: relative;
+        }
+        .mahesh-image {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #000080;
+            padding-bottom: 10px;
+        }
+        .header img {
+            width: 60px;
+            height: auto;
+            margin-right: 15px;
+        }
+        .header-text {
+            color: #000080;
+        }
+        .header-text h3 {
+            margin: 0;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .header-text h4 {
+            margin: 0;
+            font-weight: normal;
+            font-size: 14px;
+        }
+        h2 {
+            text-align: center;
+            color: #000080;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #000080;
+        }
+        input[type="text"], input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #000080;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        input[type="file"] {
+            margin-top: 10px;
+        }
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            background-color: #000080;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #333366;
+        }
+    </style>
+    <script>
+        let candidateImageDataURL = "";
+
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function(){
+                candidateImageDataURL = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+
+        function generatePAN() {
+            var name = document.getElementById("name").value;
+            var mother = document.getElementById("mother").value;
+            var father = document.getElementById("father").value;
+            var dob = document.getElementById("dob").value;
+            var aadhar = document.getElementById("aadhar").value;
+
+            if (!name || !mother || !father || !dob || !aadhar) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            // Prepare data to pass to new window
+            const panData = {
+                name: name,
+                mother: mother,
+                father: father,
+                dob: dob,
+                aadhar: aadhar,
+                image: candidateImageDataURL
+            };
+
+            // Open new window and write PAN card HTML
+            const panWindow = window.open("", "_blank", "width=450,height=600");
+            panWindow.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Generated PAN Card</title>
+                    <style>
+                        body {
+                            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                            background-color: #ffffff;
+                            margin: 10px;
+                            display: flex;
+                            justify-content: center;
+                        }
+                        .pan-card {
+                            width: 430px;
+                            border: 1.5px solid #000;
+                            padding: 15px 25px 25px 25px;
+                            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+                            background-color: #f9f9f9;
+                            border-radius: 8px;
+                            position: relative;
+                            font-size: 14px;
+                            color: #000;
+                        }
+                        .header {
+                            display: flex;
+                            align-items: center;
+                            margin-bottom: 10px;
+                            border-bottom: 3px solid #000;
+                            padding-bottom: 8px;
+                        }
+                        .header img {
+                            width: 70px;
+                            height: auto;
+                            margin-right: 20px;
+                        }
+                        .header-text {
+                            color: #000;
+                        }
+                        .header-text h3 {
+                            margin: 0;
+                            font-weight: 900;
+                            font-size: 22px;
+                            letter-spacing: 1px;
+                        }
+                        .header-text h4 {
+                            margin: 0;
+                            font-weight: 600;
+                            font-size: 16px;
+                            letter-spacing: 0.5px;
+                        }
+                        h2 {
+                            text-align: center;
+                            color: #000;
+                            margin: 15px 0 25px 0;
+                            font-weight: 900;
+                            font-size: 18px;
+                            letter-spacing: 1.5px;
+                        }
+                        .photo {
+                            width: 120px;
+                            height: 160px;
+                            border: 2px solid #000;
+                            margin: 0 0 15px 0;
+                            display: block;
+                            background-color: #eee;
+                            border-radius: 6px;
+                            float: right;
+                        }
+                        .info-label {
+                            font-weight: 700;
+                            color: #000;
+                            margin-top: 12px;
+                            font-size: 13px;
+                            letter-spacing: 0.5px;
+                        }
+                        .info-value {
+                            margin-top: 4px;
+                            font-size: 15px;
+                            font-weight: 600;
+                            letter-spacing: 0.3px;
+                        }
+                        .info-row {
+                            clear: both;
+                            overflow: hidden;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="pan-card">
+                        <div class="header">
+                            <img src="government.png" alt="Government of India">
+                            <div class="header-text">
+                                <h3>Government of India</h3>
+                                <h4>Income Tax Department</h4>
+                            </div>
+                        </div>
+                        <h2>PERMANENT ACCOUNT NUMBER (PAN) CARD</h2>
+                        <img src="${panData.image || ''}" alt="Candidate Photo" class="photo" />
+                        <div class="info-row">
+                            <div class="info-label">Name:</div>
+                            <div class="info-value">${panData.name}</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Mother's Name:</div>
+                            <div class="info-value">${panData.mother}</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Father's Name:</div>
+                            <div class="info-value">${panData.father}</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Date of Birth:</div>
+                            <div class="info-value">${panData.dob}</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Aadhar Number:</div>
+                            <div class="info-value">${panData.aadhar}</div>
+                        </div>
+                    </div>
+                </body>
+                </html>
+            `);
+            panWindow.document.close();
+        }
+    </script>
+</head>
+<body>
+        <div class="pan-card">
+            <div class="header">
+                <img src="government.png" alt="government.png">
+                <div class="header-text">
+                    <h3>Government of India</h3>
+                    <h4>Income Tax Department</h4>
+                </div>
+            </div>
+            
+            <h2>Permanent Account Number (PAN) Card</h2>
+            <label for="candidateImage">Candidate Image:</label>
+            <input type="file" id="candidateImage" accept="image/*" onchange="previewImage(event)">
+            <label for="name">Name: something</label>
+            <input type="text" id="name" placeholder="Enter your name">
+            <label for="mother">Mother's Name:</label>
+            <input type="text" id="mother" placeholder="Enter mother's name">
+            <label for="father">Father's Name:</label>
+            <input type="text" id="father" placeholder="Enter father's name">
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob">
+            <label for="aadhar">Aadhar Number:</label>
+            <input type="text" id="aadhar" placeholder="Enter Aadhar number">
+            <button onclick="generatePAN()">Generate PAN Card</button>
+        </div>
+</body>
+</html>
