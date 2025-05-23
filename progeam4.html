@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <style>
+            body {
+                background-color: lightcoral;
+            }
+        </style>
+        <script>
+            function p(){
+                var g=document.getElementById("p").value;
+                document.write(g.toUpperCase(),"<br>");
+                document.write(g.toLowerCase(),"<br>");
+                document.write(g.includes("prathap"),"<br>");
+                document.write(g.indexOf("p"),"<br>");
+                document.write(g.replace("p","s"),"<br>");
+                document.write(g.split(","),"<br>");
+            }
+        </script>
+    </head>
+    <body>
+        enter a string:<input type="text" id="p">
+        <h1 id="g"></h1>
+        <button onclick="p()">click me</button>
+    </body>
+</html>
