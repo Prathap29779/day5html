@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <style>
+            body {
+                background-color: lightpink;
+            }
+        </style>
+        <script>
+            function p(){
+                var p=document.getElementById("p").value;
+                for(var i=0;i<p.length;i++)
+                {
+                    document.write(p.charAt(i)+" ")
+                }
+            }
+        </script>
+    </head>
+    <body>
+        enter a string:<input type="text" id="p">
+        <h1 id="s"></h1>
+        <button onclick="p()">click me</button>
+    </body>
+</html>
